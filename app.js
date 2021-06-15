@@ -31,14 +31,14 @@ const displayFood = food => {
 }
 
 // Error Handle
-const displayError = () =>{
+const displayError = () => {
     const foodContainer = document.getElementById('food-container');
-        const errDiv = document.createElement('div');
-        errDiv.className = 'error';
-        errDiv.innerHTML = `
+    const errDiv = document.createElement('div');
+    errDiv.className = 'error';
+    errDiv.innerHTML = `
                <h2> দুঃখিত <span style='font-size:100px;'>&#128557;</span>আপনার সার্চকৃত খাদ্যের নামটি সঠিক নয় !!!</h2>
            `
-        foodContainer.appendChild(errDiv)
+    foodContainer.appendChild(errDiv)
 }
 
 
@@ -81,4 +81,3 @@ const renderFoodInfo = food => {
 
     })
 }
-

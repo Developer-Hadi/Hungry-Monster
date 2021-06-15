@@ -1,6 +1,7 @@
-body{
+body {
     background-color: aliceblue;
 }
+
 li.nav-item {
     margin: 0 10px;
 }
@@ -21,22 +22,25 @@ a.navbar-brand {
     color: #fff;
     font-weight: 500;
 }
-.search-btn:hover{
+
+.search-btn:hover {
     color: #fff;
 }
 
 
-#food-container{
+#food-container {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
-.food{
+
+.food {
     border-radius: 10px;
     margin: 15px;
     text-align: center;
     background-color: #F8F7F5;
 }
-.error{
+
+.error {
     width: 1000px;
     border-radius: 10px;
     margin: 15px auto;
@@ -44,16 +48,19 @@ a.navbar-brand {
     text-align: center;
     background-color: #F8F7F5;
 }
-.error h2{
+
+.error h2 {
     color: red;
     padding: 10px 0;
 }
-.food h2{
+
+.food h2 {
     color: limegreen;
     padding: 10px 0;
     cursor: pointer;
 }
-.food img{
+
+.food img {
     border-radius: 10px;
     width: 100%;
 }
@@ -70,7 +77,9 @@ div#food-details-container {
     padding-bottom: 20px;
 }
 
-#food-details-container.food h2,#food-details-container.food h4, #food-details-container.food p {
+#food-details-container.food h2,
+#food-details-container.food h4,
+#food-details-container.food p {
     padding-left: 20px;
 }
 
@@ -82,7 +91,7 @@ div#food-details-container {
     padding-bottom: 10px;
 }
 
-#foodDetails{
+#foodDetails {
     display: none;
 }
 
