@@ -1,31 +1,54 @@
-fetch('https://www.themealdb.com/api/json/v1/1/search.php?s')
-.then(res => res.json())
-.then(data => displayFood(data.meals))
+// Food Search 
+document.getElementById('search-btn').addEventListener('click', () => {
+    searchInfo();
+})
+
+const searchInfo = () => {
+    const foodName = document.getElementById('search-input').value;
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayFood(data.meals))
+        .catch(displayError())
+}
 
 const displayFood = food => {
+    console.log(food);
     const foodContainer = document.getElementById('food-container');
-   for (let i = 0; i < 8; i++) {
-       const foodItem = food[i];
-       const foodDiv = document.createElement('div');
-           foodDiv.className = 'food';
-           foodDiv.innerHTML = `
+    foodContainer.innerHTML = '';
+    for (let i = 0; i < food.length; i++) {
+        const foodItem = food[i];
+        const foodDiv = document.createElement('div');
+        foodDiv.className = 'food';
+        foodDiv.innerHTML = `
             <div onclick="displayFoodDetails('${foodItem.strMeal}')">
                <img src="${foodItem.strMealThumb}">
                <h2> ${foodItem.strMeal}</h2>
             </div>
            `
-           foodContainer.appendChild(foodDiv)
-       
-   }
-
+        foodContainer.appendChild(foodDiv)
+    }
 }
 
-// Food Details
-const displayFoodDetails = (food) =>{
+// Error Handle
+const displayError = () =>{
+    const foodContainer = document.getElementById('food-container');
+        const errDiv = document.createElement('div');
+        errDiv.className = 'error';
+        errDiv.innerHTML = `
+               <h2> দুঃখিত <span style='font-size:100px;'>&#128557;</span>আপনার সার্চকৃত খাদ্যের নামটি সঠিক নয় !!!</h2>
+           `
+        foodContainer.appendChild(errDiv)
+}
+
+
+
+// Display Food Details
+const displayFoodDetails = (food) => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${food}`;
     fetch(url)
-    .then(res => res.json())
-    .then(data => renderFoodInfo(data.meals[0]))
+        .then(res => res.json())
+        .then(data => renderFoodInfo(data.meals[0]))
 }
 
 const renderFoodInfo = food => {
@@ -51,16 +74,11 @@ const renderFoodInfo = food => {
     const foodDetailsContainer = document.getElementById('foodDetails');
     mainContainer.style.display = 'none';
     foodDetailsContainer.style.display = 'block';
-    
-    document.getElementById('back').addEventListener('click', ()=>{
+
+    document.getElementById('back').addEventListener('click', () => {
         mainContainer.style.display = 'block';
         foodDetailsContainer.style.display = 'none';
 
-    })    
+    })
 }
 
-// Search Food Item
-// document.getElementById('search-btn').addEventListener('click', ()=>{
-//     const inputFood = document.getElementById('search-input');
-//     console.log(inputFood.value);
-// })
