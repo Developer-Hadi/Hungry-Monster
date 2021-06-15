@@ -9,7 +9,7 @@ const searchInfo = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayFood(data.meals))
-        .catch(displayError())
+        .catch(err => displayError())
 }
 
 const displayFood = food => {
