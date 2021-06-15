@@ -9,9 +9,10 @@ const displayFood = food => {
        const foodDiv = document.createElement('div');
            foodDiv.className = 'food';
            foodDiv.innerHTML = `
+            <div onclick="displayFoodDetails('${foodItem.strMeal}')">
                <img src="${foodItem.strMealThumb}">
                <h2> ${foodItem.strMeal}</h2>
-               <button onclick="displayFoodDetails('${foodItem.strMeal}')">Details</button>
+            </div>
            `
            foodContainer.appendChild(foodDiv)
        
@@ -44,11 +45,18 @@ const renderFoodInfo = food => {
         <p>${food.strIngredient8}</p>
         <p>${food.strIngredient9}</p>
         <p>${food.strIngredient10}</p>
+        <button id="back">Back to Home</button>
     `
     const mainContainer = document.getElementById('main-container');
-    mainContainer.style.display = 'none'
-
+    const foodDetailsContainer = document.getElementById('foodDetails');
+    mainContainer.style.display = 'none';
+    foodDetailsContainer.style.display = 'block';
     
+    document.getElementById('back').addEventListener('click', ()=>{
+        mainContainer.style.display = 'block';
+        foodDetailsContainer.style.display = 'none';
+
+    })    
 }
 
 // Search Food Item
